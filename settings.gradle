@@ -1,0 +1,3 @@
+rootProject.name = 'simple-audit'
+include 'simple-audit-core'
+
