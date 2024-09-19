@@ -1,3 +1,4 @@
 rootProject.name = 'simple-audit'
 include 'simple-audit-core'
+include 'simple-audit-auth'
 

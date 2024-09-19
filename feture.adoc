@@ -1,0 +1,76 @@
+审计功能需求描述-2024
+Feature
+审计记录功能
+1.基本功能是记录请求的 接口、人、时间。
+2.能够记录接口更多信息：
+a.入参、 出参
+b.操作时间
+c.自定义信息
+d.数据变更对比
+3.可以对一次请求记录多个审计信息
+4.审计数据支持多种持久化方案
+获取用户信息
+5.页面终端访问需要从登录态中获取登录信息
+6.非页面终端访问需要传入授权信息，以获取用户
+a.Authorization: Bearer ACCESS_TOKEN
+7.so，支持终端对接
+a.获取登录人信息
+b.请求应带有用户信息，否则应该返回 401
+简单使用
+1.将上面的功能通过配置 + 切面方式注入到一个 spring 应用中
+
+
+实现
+审计记录功能
+1.通用的审计接口
+
+audit.audit(
+    String requestId, // 请求id，一次请求中可以记录多个 audit
+    String endPointName, // 请求的端口标识，可以是 url，或者接口签名
+    String tag, // audit 记录的目的，可以是 input，output，changes，msg等，自定义，用来决定 content 的内容
+    String userid, // 用户标识
+    String username, // 用户呈现名称
+    String userDetails, // 用户更多的描述，可以是 组织，职位 等
+    String content // 审计的更多信息，自定义。可以是 输入、输出、变更前的对象，变更后的对象，或者仅仅是一段变更记录等。
+    )
+
+
+
+2.提供一个 requestId 的生成策略，提供后，可以不传 requestId。也可以使用 traceId 作为requestId
+// 使用 UUID
+audit.config(new RequestIdConfig(new UUIDGenerator(), new ThreadLocalStore()))
+// 使用 traceId
+audit.config(new RequestIdConfig(new KeTraceIdGenerator(), new KeTraceIdStore()))
+
+
+audit.genRequestId()
+audit.getRequestId()
+
+
+3.提供一个多种审计信息记录的方案
+audit.config(new AuditRecorder())
+
+LogAuditRecorder implements AuditRecorder
+MysqlAuditRecorder implements AuditRecorder
+......
+
+
+以上为 core 模块的内容
+
+授权功能
+1.通过登录信息获取 access_key，有有效期。可以通过 access_key 找到 用户信息
+
+获取 accessKey
+String accessKey(String userId, String username, LocalDateTime expireTime)
+
+
+2.对 access_key 做校验，并返回用户信息
+
+在 Spring 项目中更简单的使用，不一定都在这个库里
+1.获取 access_key 的 controller
+2.提供 access_key 获取用户信息的拦截器
+3.配置 requestIdGenerator，auditRecorder
+4.注解切面实现 audit，实现可注入用户信息获取的方法
+
+
+
