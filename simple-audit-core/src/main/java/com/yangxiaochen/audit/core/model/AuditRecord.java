@@ -1,4 +1,4 @@
-package com.yangxiaochen.audit.core;
+package com.yangxiaochen.audit.core.model;
 
 public class AuditRecord {
     private String requestId;
@@ -73,5 +73,9 @@ public class AuditRecord {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String toString() {
+        return "AuditRecord(requestId=" + this.getRequestId() + ", endPointName=" + this.getEndPointName() + ", tag=" + this.getTag() + ", userid=" + this.getUserid() + ", username=" + this.getUsername() + ", userDetails=" + this.getUserDetails() + ", content=" + this.getContent() + ")";
     }
 }
