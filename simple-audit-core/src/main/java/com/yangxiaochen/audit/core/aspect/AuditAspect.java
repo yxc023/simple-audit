@@ -68,7 +68,7 @@ public class AuditAspect {
         // 如果用户设置了自定义的 tag
         if (tag != null && !tag.isEmpty()) {
             String customContent = auditContentProvider.provideContent(tag, joinPoint.getArgs(), result);
-            // 记录自定义的出参
+            // 记录自定义的content
             auditService.audit(requestId, endPointName, tag, userInfo.getUserId(), userInfo.getUsername(), userInfo.getUserDetails(), customContent);
         }
 
