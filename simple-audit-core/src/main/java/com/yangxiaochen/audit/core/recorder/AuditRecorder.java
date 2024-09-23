@@ -1,4 +1,4 @@
-package com.yangxiaochen.audit.core;
+package com.yangxiaochen.audit.core.recorder;
 
 public interface AuditRecorder {
 

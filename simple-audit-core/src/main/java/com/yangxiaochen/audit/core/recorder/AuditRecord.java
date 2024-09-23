@@ -1,5 +1,9 @@
-package com.yangxiaochen.audit.core;
+package com.yangxiaochen.audit.core.recorder;
 
+
+import lombok.Data;
+
+@Data
 public class AuditRecord {
     private String requestId;
     private String endPointName;
@@ -16,62 +20,6 @@ public class AuditRecord {
         this.userid = userid;
         this.username = username;
         this.userDetails = userDetails;
-        this.content = content;
-    }
-
-    public String getRequestId() {
-        return requestId;
-    }
-
-    public void setRequestId(String requestId) {
-        this.requestId = requestId;
-    }
-
-    public String getEndPointName() {
-        return endPointName;
-    }
-
-    public void setEndPointName(String endPointName) {
-        this.endPointName = endPointName;
-    }
-
-    public String getTag() {
-        return tag;
-    }
-
-    public void setTag(String tag) {
-        this.tag = tag;
-    }
-
-    public String getUserid() {
-        return userid;
-    }
-
-    public void setUserid(String userid) {
-        this.userid = userid;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getUserDetails() {
-        return userDetails;
-    }
-
-    public void setUserDetails(String userDetails) {
-        this.userDetails = userDetails;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
         this.content = content;
     }
 }

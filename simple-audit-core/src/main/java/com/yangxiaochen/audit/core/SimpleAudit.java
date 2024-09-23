@@ -1,8 +1,14 @@
 package com.yangxiaochen.audit.core;
 
+import com.yangxiaochen.audit.core.recorder.AuditRecord;
+
 public class SimpleAudit {
 
-    private AuditConfig auditConfig;
+    private SimpleAuditConfig simpleAuditConfig;
+
+    public SimpleAudit(SimpleAuditConfig simpleAuditConfig) {
+        this.simpleAuditConfig = simpleAuditConfig;
+    }
 
     /**
      * audit.audit(
@@ -17,7 +23,13 @@ public class SimpleAudit {
      */
     public void audit(String requestId, String endPointName, String tag, String userid, String username, String userDetails, String content) {
         // do audit
-        auditConfig.getAuditRecorder().record(new AuditRecord(requestId, endPointName, tag, userid, username, userDetails, content));
+        simpleAuditConfig.getAuditRecorder().record(new AuditRecord(requestId, endPointName, tag, userid, username, userDetails, content));
     }
 
+
+    public void audit(String endPointName, String tag, String userid, String username, String userDetails, String content) {
+        // do audit
+        String requestId = simpleAuditConfig.getRequestIdStore().getRequestId();
+        simpleAuditConfig.getAuditRecorder().record(new AuditRecord(requestId, endPointName, tag, userid, username, userDetails, content));
+    }
 }
