@@ -1,4 +1,4 @@
-package com.yangxiaochen.audit.core.model;
+package com.yangxiaochen.audit.spring.model;
 
 
 public class UserInfo {

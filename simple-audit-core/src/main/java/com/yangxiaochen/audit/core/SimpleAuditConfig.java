@@ -1,15 +1,15 @@
 package com.yangxiaochen.audit.core;
 
 import com.yangxiaochen.audit.core.recorder.AuditRecorder;
-import com.yangxiaochen.audit.core.request.RequestIdStore;
+import com.yangxiaochen.audit.core.request.RequestIdProvider;
 
 public class SimpleAuditConfig {
 
     private AuditRecorder auditRecorder;
 
-    private RequestIdStore requestIdStore;
+    private RequestIdProvider requestIdStore;
 
-    public SimpleAuditConfig(AuditRecorder auditRecorder, RequestIdStore requestIdStore) {
+    public SimpleAuditConfig(AuditRecorder auditRecorder, RequestIdProvider requestIdStore) {
         this.auditRecorder = auditRecorder;
         this.requestIdStore = requestIdStore;
     }
@@ -18,7 +18,7 @@ public class SimpleAuditConfig {
         return auditRecorder;
     }
 
-    public RequestIdStore getRequestIdStore() {
+    public RequestIdProvider getRequestIdStore() {
         return requestIdStore;
     }
 }

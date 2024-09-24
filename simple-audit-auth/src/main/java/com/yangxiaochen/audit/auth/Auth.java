@@ -10,12 +10,8 @@ public class Auth {
             this.accessKeyGenerator = accessKeyGenerator;
         }
 
-        public String generateAccessKey() {
-            return accessKeyGenerator.generateAccessKey();
-        }
-
-        public String saveAccessKey(String accessKey, AccessInfo accessInfo) {
-            return accessKeyStore.saveAccessKey(accessKey, accessInfo);
+        public String registerAccessKey(String accessKey, AccessInfo accessInfo) {
+            return accessKeyStore.saveAccessKey(accessKeyGenerator.generateAccessKey(), accessInfo);
         }
 
         public AccessInfo getAccessInfo(String accessKey) {

@@ -1,4 +1,4 @@
-package com.yangxiaochen.audit.core;
+package com.yangxiaochen.audit.spring;
 
 /**
  * 审计内容自定义

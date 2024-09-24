@@ -22,4 +22,6 @@ public class AuditRecord {
         this.userDetails = userDetails;
         this.content = content;
     }
+
+
 }

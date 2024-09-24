@@ -1,4 +1,4 @@
-package com.yangxiaochen.audit.core;
+package com.yangxiaochen.audit.spring;
 
 public interface ContentGenerator {
     String generateContent(Object[] args, Object result);

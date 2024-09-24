@@ -59,6 +59,24 @@ publishing {
                 password property('oss.publish.password')
             }
         }
+
+        maven {
+            name "self.release"
+            url property('oss.self.release.url')
+            credentials {
+                username property('oss.self.username')
+                password property('oss.self.password')
+            }
+        }
+
+        maven {
+            name "self.snapshot"
+            url property('oss.self.snapshot.url')
+            credentials {
+                username property('oss.self.username')
+                password property('oss.self.password')
+            }
+        }
     }
 }
 

@@ -2,7 +2,7 @@ package com.yangxiaochen.audit.core.request;
 
 import java.util.UUID;
 
-public class UUIDRequestIdStore implements RequestIdStore{
+public class UUIDRequestIdProvider implements RequestIdProvider {
     ThreadLocal<String> requestId = new InheritableThreadLocal<>();
     @Override
     public String generateRequestId() {
