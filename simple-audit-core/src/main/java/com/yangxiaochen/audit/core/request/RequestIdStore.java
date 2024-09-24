@@ -1,4 +1,4 @@
-package com.yangxiaochen.audit.core;
+package com.yangxiaochen.audit.core.request;
 
 public interface RequestIdStore {
     String generateRequestId();

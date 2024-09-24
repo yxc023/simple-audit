@@ -1,6 +1,4 @@
-package com.yangxiaochen.audit.core;
-
-import com.yangxiaochen.audit.core.model.AuditRecord;
+package com.yangxiaochen.audit.core.recorder;
 
 /**
  * 审计记录接口

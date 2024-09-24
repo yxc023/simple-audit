@@ -2,17 +2,16 @@ package com.yangxiaochen.audit.core.aspect;
 
 import com.yangxiaochen.audit.core.AuditContentProvider;
 import com.yangxiaochen.audit.core.AuditService;
-import com.yangxiaochen.audit.core.RequestIdStore;
 import com.yangxiaochen.audit.core.UserInfoProvider;
 import com.yangxiaochen.audit.core.annotation.Audit;
 import com.yangxiaochen.audit.core.model.UserInfo;
+import com.yangxiaochen.audit.core.request.RequestIdStore;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
-import java.util.Arrays;
 
 
 @Aspect

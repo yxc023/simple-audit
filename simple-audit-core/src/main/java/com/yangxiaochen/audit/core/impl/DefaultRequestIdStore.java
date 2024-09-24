@@ -1,6 +1,7 @@
 package com.yangxiaochen.audit.core.impl;
 
-import com.yangxiaochen.audit.core.RequestIdStore;
+
+import com.yangxiaochen.audit.core.request.RequestIdStore;
 
 import java.util.UUID;
 

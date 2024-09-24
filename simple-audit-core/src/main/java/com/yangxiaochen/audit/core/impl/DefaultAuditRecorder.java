@@ -1,8 +1,8 @@
 package com.yangxiaochen.audit.core.impl;
 
 
-import com.yangxiaochen.audit.core.AuditRecorder;
-import com.yangxiaochen.audit.core.model.AuditRecord;
+import com.yangxiaochen.audit.core.recorder.AuditRecord;
+import com.yangxiaochen.audit.core.recorder.AuditRecorder;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

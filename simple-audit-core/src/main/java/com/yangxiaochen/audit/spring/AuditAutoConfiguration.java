@@ -1,8 +1,9 @@
 package com.yangxiaochen.audit.spring;
 
 import com.yangxiaochen.audit.core.*;
-import com.yangxiaochen.audit.core.config.AuditConfig;
 import com.yangxiaochen.audit.core.impl.*;
+import com.yangxiaochen.audit.core.recorder.AuditRecorder;
+import com.yangxiaochen.audit.core.request.RequestIdStore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -36,13 +37,13 @@ public class AuditAutoConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    public AuditConfig auditConfig(AuditRecorder auditRecorder, RequestIdStore requestIdStore) {
-        return new AuditConfig(auditRecorder, requestIdStore);
+    public SimpleAuditConfig auditConfig(AuditRecorder auditRecorder, RequestIdStore requestIdStore) {
+        return new SimpleAuditConfig(auditRecorder, requestIdStore);
     }
 
     @Bean
     @ConditionalOnMissingBean
-    public AuditService auditService(AuditConfig auditConfig) {
-        return new DefaultAuditService(auditConfig);
+    public AuditService auditService(SimpleAuditConfig simpleAuditConfig) {
+        return new DefaultAuditService(simpleAuditConfig);
     }
 }

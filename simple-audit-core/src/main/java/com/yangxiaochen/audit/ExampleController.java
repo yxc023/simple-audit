@@ -11,6 +11,6 @@ public class ExampleController {
     @Audit
     @GetMapping("/data")
     public String getData(String param, String param2) {
-        throw new RuntimeException("error");
+        return "data";
     }
 }

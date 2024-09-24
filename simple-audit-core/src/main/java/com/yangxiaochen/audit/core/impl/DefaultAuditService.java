@@ -1,15 +1,15 @@
 package com.yangxiaochen.audit.core.impl;
 
-import com.yangxiaochen.audit.core.config.AuditConfig;
-import com.yangxiaochen.audit.core.model.AuditRecord;
+import com.yangxiaochen.audit.core.SimpleAuditConfig;
 import com.yangxiaochen.audit.core.AuditService;
+import com.yangxiaochen.audit.core.recorder.AuditRecord;
 
 public class DefaultAuditService implements AuditService {
 
-    private AuditConfig auditConfig;
+    private SimpleAuditConfig simpleAuditConfig;
 
-    public DefaultAuditService(AuditConfig auditConfig) {
-        this.auditConfig = auditConfig;
+    public DefaultAuditService(SimpleAuditConfig simpleAuditConfig) {
+        this.simpleAuditConfig = simpleAuditConfig;
     }
     /**
      * audit.audit(
@@ -24,6 +24,6 @@ public class DefaultAuditService implements AuditService {
      */
     @Override
     public void audit(String requestId, String endPointName, String tag, String userid, String username, String userDetails, String content) {
-        auditConfig.getAuditRecorder().saveRecord(new AuditRecord(requestId, endPointName, tag, userid, username, userDetails, content));
+        simpleAuditConfig.getAuditRecorder().saveRecord(new AuditRecord(requestId, endPointName, tag, userid, username, userDetails, content));
     }
 }
