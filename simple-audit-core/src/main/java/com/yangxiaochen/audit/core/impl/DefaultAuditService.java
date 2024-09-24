@@ -1,15 +1,16 @@
-package com.yangxiaochen.audit.core;
+package com.yangxiaochen.audit.core.impl;
 
+import com.yangxiaochen.audit.core.SimpleAuditConfig;
+import com.yangxiaochen.audit.core.AuditService;
 import com.yangxiaochen.audit.core.recorder.AuditRecord;
 
-public class SimpleAudit {
+public class DefaultAuditService implements AuditService {
 
     private SimpleAuditConfig simpleAuditConfig;
 
-    public SimpleAudit(SimpleAuditConfig simpleAuditConfig) {
+    public DefaultAuditService(SimpleAuditConfig simpleAuditConfig) {
         this.simpleAuditConfig = simpleAuditConfig;
     }
-
     /**
      * audit.audit(
      *     String requestId, // 请求id，一次请求中可以记录多个 audit
@@ -21,15 +22,8 @@ public class SimpleAudit {
      *     String content // 审计的更多信息，自定义。可以是 输入、输出、变更前的对象，变更后的对象，或者仅仅是一段变更记录等。
      *     )
      */
+    @Override
     public void audit(String requestId, String endPointName, String tag, String userid, String username, String userDetails, String content) {
-        // do audit
-        simpleAuditConfig.getAuditRecorder().saveRecord(new AuditRecord(requestId, endPointName, tag, userid, username, userDetails, content));
-    }
-
-
-    public void audit(String endPointName, String tag, String userid, String username, String userDetails, String content) {
-        // do audit
-        String requestId = simpleAuditConfig.getRequestIdStore().getRequestId();
         simpleAuditConfig.getAuditRecorder().saveRecord(new AuditRecord(requestId, endPointName, tag, userid, username, userDetails, content));
     }
 }
